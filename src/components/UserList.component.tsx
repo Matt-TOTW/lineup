@@ -47,7 +47,6 @@ const UserList: React.FC<RouteComponentProps & PropsFromRedux> = props => {
 			props.history.replace(`/users?page=${query}`)
 		}
 		// Dispatch the page to the store
-		props.setPage(query)
 
 		axios({
 			url: `https://reqres.in/api/users?page=${query}`,
@@ -56,11 +55,13 @@ const UserList: React.FC<RouteComponentProps & PropsFromRedux> = props => {
 				setError("")
 				setUsers(res.data.data)
 				setTotalPages(res.data.total_pages)
+				props.setPage(query)
 				if (query > res.data.total_pages) {
 					setError(`There are only ${res.data.total_pages} pages`)
 				}
 			})
 			.catch(err => {
+				props.setPage(query)
 				setError(`There was an error. Code: ${err.response.status}`)
 			})
 	}, [props])
