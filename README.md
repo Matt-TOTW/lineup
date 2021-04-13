@@ -22,7 +22,7 @@ npm run test
 #### Code design
 
 The code uses React and Typescript with Redux and Styled Components.
-I am quite new to typescript so the challenge for me was mostly in leveraging that, particularly in conjunction with Redux. I wasn't sure where I should define my types. For types that are reused often, I placed them (actually there's only one) in a file at src/types/types.tsx. For others, I defined them in the relevant file.
+I am quite new to typescript so the challenge for me was mostly in leveraging that, particularly in conjunction with Redux. I wasn't sure where I should define my types. For types that are reused often, I placed them (actually there's only one) in a file at src/types/types.ts. For others, I defined them in the relevant file.
 
 Because it's quite a simple app, the use of Redux is probably overkill, so I've implemented it in a way that is probably over-engineered, but I wanted to demonstrate a working knowledge of it.
 
