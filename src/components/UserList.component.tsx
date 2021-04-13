@@ -46,7 +46,6 @@ const UserList: React.FC<RouteComponentProps & PropsFromRedux> = props => {
 			// Else go to query, but only if it has changed since last render
 			props.history.replace(`/users?page=${query}`)
 		}
-		// Dispatch the page to the store
 
 		axios({
 			url: `https://reqres.in/api/users?page=${query}`,
