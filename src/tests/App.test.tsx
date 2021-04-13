@@ -36,7 +36,7 @@ test("loads up the AppRouter, and routes to the /users page", async () => {
 		</Provider>
 	)
 
-	// await the result of the mocked api call
+	// await the result of the mocked api call which occurs inside useEffect
 	await act(
 		() =>
 			new Promise<void>(resolve => {
