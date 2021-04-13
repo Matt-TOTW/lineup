@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# Line Up code challenge | Matthew Cox
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React and Typescript app to retrieve paged api data
 
-## Available Scripts
+## Install and run
 
-In the project directory, you can run:
+```bash
+npm install
+npm run start
+```
 
-### `npm start`
+The app should then be accessible at localhost:3000
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Test
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm run test
+```
 
-### `npm test`
+## Notes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Code design
 
-### `npm run build`
+The code uses React and Typescript with Redux and Styled Components.
+I am quite new to typescript so the challenge for me was mostly in leveraging that, particularly in conjunction with Redux. I wasn't sure where I should define my types. For types that are reused often, I placed them (actually there's only one) in a file at src/types/types.tsx. For others, I defined them in the relevant file.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Because it's quite a simple app, the use of Redux is probably overkill so I've implemented it in a way that is probably over-engineered, but I wanted to demonstrate a working knowledge of it.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I am completely new to Styled Components so I was excited to have a good excuse to use them. I'm not sure I've utilised in the best possible way but I have found them quite neat and tidy. It's nice that they avoid conditional class names by accepting props and I particulary like the ThemeProvider, which I have utilised.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### UI Design
 
-### `npm run eject`
+I have kept the look of the app very simple. It's a simple app and I didn't want to overdo it. Whilst I think I have a good, or at least experienced eye for design, it is not my forte and I didn't want to clutter the code with too much extraneous code. Much of the look of the app is defined in the two theme files in src/theme (one for dark mode and one for light mode).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Testing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I have only brought in one test which I hope demonstrates an understanind of Jest and Enzyme together with async calls like the api calls. Becuase these api calls depend on url params, I chose to use MemoryRouter to test the routes, rather than the stand alone components.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The combination of jest and typescript required babel, which is a dev dependency. I used create-react-app to initialise the app and this uses React 17 by default. In retrospect I possibly should've downgraded React as enzyme needed a new, unofficial adapter, so I have had to use that, although I think this would be a temporary solution until enzyme specifies an official one.
