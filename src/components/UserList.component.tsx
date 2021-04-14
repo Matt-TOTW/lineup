@@ -39,8 +39,8 @@ const UserList: React.FC<RouteComponentProps & PropsFromRedux> = props => {
 		// Prioritise url query over store
 		const query: string = props.location.search.split("=")[1] || props.page
 
-		if (!query || parseInt(query) < 1) {
-			// Treat q<1 as out of bounds, go to page 1
+		if (!query || parseInt(query) < 1 || isNaN(parseInt(query))) {
+			// Treat q<1 as out of bounds or isNaN, go to page 1
 			props.history.replace(`/users?page=1`)
 		} else if (query !== props.location.search.split("=")[1]) {
 			// Else go to query, but only if it has changed since last render
